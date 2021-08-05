@@ -1,6 +1,7 @@
 from dataclasses import dataclass
 from datetime import date
 from enum import Enum, unique
+from tokenize import endpats
 from typing import List, Optional, TypedDict, Union
 
 from requests import get
@@ -47,13 +48,13 @@ class OrdenarEnum(Enum):
     """
     NN = 'NOSSONUMERO'
     SN = 'SEUNUMERO'
-    DVA = 'DATAVENCIMENTO_ASC'
-    DVD = 'DATAVENCIMENTO_DSC'
+    DVA = 'DATAVENCIMENTO'
+    #DVD = 'DATAVENCIMENTO'
     NS = 'NOMESACADO'
-    VA = 'VALOR_ASC'
-    VD = 'VALOR_DSC'
-    SA = 'STATUS_ASC'
-    SD = 'STATUS_DSC'
+    VA = 'VALOR'
+    #VD = 'VALOR'
+    SA = 'STATUS'
+    #SD = 'STATUS'
 
 
 @dataclass
@@ -163,18 +164,19 @@ def get_lista_boletos(data_inicial: date, data_final: date,
 
     params = {
         'dataInicial': str(data_inicial),
-        'dataFinal': str(data_final)
+        'dataFinal': str(data_final),
+        'size': '50'
     }
 
     if filtrar is not None:
         params.update({'filtrarPor': filtrar.value})
-
+    
     if ordernar is not None:
-        params.update({'ordernarPor': ordernar.value})
+        params.update({'ordenarPor': ordernar.value})
 
-    if size is not None:
-        size = 20 if size > 20 else size
-        params.update({'size': size})
+    #if size is not None:
+    #    size = 50 if size > 50 else size
+    #    params.update({'size': size})
 
     if page is not None:
         params.update({'page': page})
