@@ -187,3 +187,4 @@ def get_lista_boletos(data_inicial: date, data_final: date,
     contents = check_response(response, "Filtragem inválida.")
 
     return ResponseList(**contents)
+ 
