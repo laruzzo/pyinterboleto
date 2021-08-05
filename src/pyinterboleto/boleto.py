@@ -392,3 +392,4 @@ class Boleto:
 
         """
         executa_baixa(nosso_numero, codigo_baixa, self.configs)
+        
