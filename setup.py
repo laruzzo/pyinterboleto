@@ -3,7 +3,7 @@ import setuptools
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
-GITHUB_URL = "https://github.com/feslima/pyinterboleto"
+GITHUB_URL = "https://github.com/laruzzo/pyinterboleto"
 
 __version__ = "0.0.2"
 
